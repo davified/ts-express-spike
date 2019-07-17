@@ -8,7 +8,7 @@
     "tsc": "tsc",
     "dev": "ts-node-dev --respawn --transpileOnly ./app.ts",
     "prod": "tsc && node ./build/app.js",
-    "tslint": "tslint --project ."
+    "tslint": "tslint -c tslint.json -p tsconfig.json --project ."
   },
   "keywords": [],
   "author": "",
