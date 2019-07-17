@@ -1,4 +1,4 @@
-import express = require("express");
+import express from "express";
 
 // Create a new express application instance
 const app: express.Application = express();
