@@ -4,11 +4,10 @@ interface ICreateUserInput {
   name: IUser["name"];
 }
 
-async function createUser({ name }: ICreateUserInput): Promise<IUser> {
+const createUser = async ({ name }: ICreateUserInput): Promise<IUser> => {
   const data: IUser = await User.create({
     name,
   });
-
   return data;
 }
 
