@@ -38,12 +38,17 @@ app.put(
   "/users/:name",
   asyncHandler(async (req, res) => {
     const name = req.params.name;
-    User.findOneAndUpdate({ name }, req.body, { new: true }, (err, contact) => {
-      if (err) {
-        res.send(err);
-      }
-      res.json(contact);
-    });
+    const data = await User.findOneAndUpdate({ name }, req.body, { new: true });
+    res.send(data);
+  })
+);
+
+app.delete(
+  "/users/:name",
+  asyncHandler(async (req, res) => {
+    const name = req.params.name;
+    const data = await User.remove({ name });
+    res.send(data);
   })
 );
 
