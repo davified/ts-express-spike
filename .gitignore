@@ -1,4 +1,5 @@
 node_modules
 
 # should gitignore built output
-# dist
+dist
+build
