@@ -34,6 +34,19 @@ app.get(
   })
 );
 
+app.put(
+  "/users/:name",
+  asyncHandler(async (req, res) => {
+    const name = req.params.name;
+    User.findOneAndUpdate({ name }, req.body, { new: true }, (err, contact) => {
+      if (err) {
+        res.send(err);
+      }
+      res.json(contact);
+    });
+  })
+);
+
 app.post(
   "/users",
   asyncHandler(async (req, res) => {
