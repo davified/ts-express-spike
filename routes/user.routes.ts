@@ -24,8 +24,8 @@ router
   .post(
     "/",
     asyncHandler(async (req, res) => {
-      const { name } = req.body;
-      const user = await userController.createUser({ name });
+      const { name, about } = req.body;
+      const user = await userController.createUser({ name, about });
       res.json(user);
     })
   )
