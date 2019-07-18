@@ -11,4 +11,4 @@ router
   .put("/:name", asyncHandler(userController.update))
   .delete("/:name", asyncHandler(userController.deleteAll));
 
-module.exports = router;
+export default router;

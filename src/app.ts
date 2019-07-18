@@ -1,8 +1,7 @@
 import bodyParser from "body-parser";
 import express from "express";
 import mongoose from "mongoose";
-
-const UserRouter = require("./routes/user.routes");
+import UserRouter from "./routes/user.routes";
 
 mongoose.connect("mongodb://localhost:27017/local_db", {
   useNewUrlParser: true,
