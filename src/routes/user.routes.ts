@@ -1,44 +1,14 @@
 import asyncHandler from "express-async-handler";
 import express from "express";
 import userController from "../controllers/user.controller";
-import User from "../models/user.model";
 
 const router = express.Router();
 
 router
-  .get(
-    "/",
-    asyncHandler(async (req, res) => {
-      const data = await User.find();
-      res.send(data);
-    })
-  )
-  .get(
-    "/:name",
-    asyncHandler(async (req, res) => {
-      const name = req.params.name;
-      const data = await User.findOne({ name });
-      res.json(data);
-    })
-  )
+  .get("/", asyncHandler(userController.list))
+  .get("/:name", asyncHandler(userController.get))
   .post("/", asyncHandler(userController.create))
-  .put(
-    "/:name",
-    asyncHandler(async (req, res) => {
-      const name = req.params.name;
-      const data = await User.findOneAndUpdate({ name }, req.body, {
-        new: true,
-      });
-      res.send(data);
-    })
-  )
-  .delete(
-    "/:name",
-    asyncHandler(async (req, res) => {
-      const name = req.params.name;
-      const data = await User.remove({ name });
-      res.send(data);
-    })
-  );
+  .put("/:name", asyncHandler(userController.update))
+  .delete("/:name", asyncHandler(userController.deleteAll));
 
 module.exports = router;
