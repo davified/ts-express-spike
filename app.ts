@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import express from "express";
 import mongoose from "mongoose";
 import userController from "./controllers/user.controller";
+import User from "./models/user.model";
 
 mongoose.connect("mongodb://localhost:27017/local_db", {
   useNewUrlParser: true,
@@ -15,6 +16,14 @@ app.use(bodyParser.json());
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
+
+app.get(
+  "/users",
+  asyncHandler(async (req, res) => {
+    const data = await User.find();
+    res.send(data);
+  })
+);
 
 app.post(
   "/users",
