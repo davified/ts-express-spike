@@ -29,7 +29,7 @@ app.get(
   "/users/:name",
   asyncHandler(async (req, res) => {
     const name = req.params.name;
-    const data = await User.find({ name });
+    const data = await User.findOne({ name });
     res.json(data);
   })
 );
