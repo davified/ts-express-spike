@@ -25,6 +25,15 @@ app.get(
   })
 );
 
+app.get(
+  "/users/:name",
+  asyncHandler(async (req, res) => {
+    const name = req.params.name;
+    const data = await User.find({ name });
+    res.json(data);
+  })
+);
+
 app.post(
   "/users",
   asyncHandler(async (req, res) => {
