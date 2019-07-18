@@ -5,15 +5,11 @@ interface ICreateUserInput {
 }
 
 async function createUser({ name }: ICreateUserInput): Promise<IUser> {
-  return User.create({
+  const data: IUser = await User.create({
     name,
-  })
-    .then((data: IUser) => {
-      return data;
-    })
-    .catch((error: Error) => {
-      throw error;
-    });
+  });
+
+  return data;
 }
 
 export default {

@@ -1,3 +1,4 @@
+import asyncHandler from "express-async-handler";
 import bodyParser from "body-parser";
 import express from "express";
 import mongoose from "mongoose";
@@ -15,15 +16,14 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-app.post("/users", async (req, res) => {
-  const { name } = req.body;
-  try {
+app.post(
+  "/users",
+  asyncHandler(async (req, res) => {
+    const { name } = req.body;
     const user = await userController.createUser({ name });
     res.json(user);
-  } catch (err) {
-    res.json(err);
-  }
-});
+  })
+);
 
 app.listen(3000, () => {
   // tslint:disable-next-line:no-console
