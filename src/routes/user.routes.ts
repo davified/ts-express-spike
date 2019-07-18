@@ -21,14 +21,7 @@ router
       res.json(data);
     })
   )
-  .post(
-    "/",
-    asyncHandler(async (req, res) => {
-      const { name, about } = req.body;
-      const user = await userController.createUser({ name, about });
-      res.json(user);
-    })
-  )
+  .post("/", asyncHandler(userController.create))
   .put(
     "/:name",
     asyncHandler(async (req, res) => {

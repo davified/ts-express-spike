@@ -1,22 +1,13 @@
-import IUser from "../models/user";
 import User from "../models/user.model";
+import { Request, Response } from "express";
 
-interface ICreateUser {
-  name: IUser["name"];
-  about: IUser["about"];
-}
-
-const createUser = async ({
-  name,
-  about = "",
-}: ICreateUser): Promise<IUser> => {
-  const data: IUser = await User.create({
-    name,
-    about,
-  });
-  return data;
+const create = async (req: Request, res: Response) => {
+  const newUser = new User(req.body);
+  const data = await newUser.save();
+  res.send(data);
 };
 
+
 export default {
-  createUser,
+  create,
 };
