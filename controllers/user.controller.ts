@@ -1,4 +1,4 @@
-import User, { IUser } from "../models/User";
+import User, { IUser } from "../models/user.model";
 
 interface ICreateUserInput {
   name: IUser["name"];
